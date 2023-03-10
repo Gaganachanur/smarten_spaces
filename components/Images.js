@@ -23,24 +23,24 @@ const Images = ({ navigation, route }) => {
     })();
   }, []);
 
-  const PickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+//   const PickImage = async () => {
+//     const result = await ImagePicker.launchImageLibraryAsync({
+//       mediaTypes: ImagePicker.MediaTypeOptions.Images,
+//       allowsEditing: true,
+//       aspect: [4, 3],
+//       quality: 1,
+//     });
 
-    console.log(result.uri);
+//     console.log(result.uri);
 
-    if (!result.canceled) {
-      setImage(result.uri);
-    }
-  };
+//     if (!result.canceled) {
+//       setImage(result.uri);
+//     }
+//   };
 
-  if (hasGallery === false) {
-    return <Text> no acess to internal storage</Text>;
-  }
+//   if (hasGallery === false) {
+//     return <Text> no acess to internal storage</Text>;
+//   }
 
   const chooseImage = async () => {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -71,22 +71,7 @@ const Images = ({ navigation, route }) => {
 
   return (
     <View>
-      <Button
-        title="choose Image"
-        style={{ flex: 1, justifycontent: "center" }}
-        onPress={PickImage}
-      ></Button>
-      {image && (
-        <View>
-          <Image
-            source={{ url: image }}
-            style={{
-              flex: 1 / 2,
-            }}
-          />
-        </View>
-      )}
-
+    
       <Button title="Select Image" onPress={chooseImage} />
       {image && (
         <View>
@@ -100,15 +85,7 @@ const Images = ({ navigation, route }) => {
         </View>
       )}
 
-      <Image
-        style={{ width: 100, height: 100 }}
-        source={{
-          uri: "https://images.unsplash.com/photo-1678196710829-acea98264173?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-        }}
-        resizeMode={"cover"} // cover or contain its upto you view look
-      />
-
-      <Text> ultra</Text>
+    
     </View>
   );
 };
